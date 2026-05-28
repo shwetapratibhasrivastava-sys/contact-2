@@ -16,3 +16,5 @@ const authMiddlware = (req, res, next) => {
     return res.json(error.message);
   }
 };
+
+export default authMiddlware
