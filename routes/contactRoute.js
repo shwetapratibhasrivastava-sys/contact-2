@@ -8,8 +8,8 @@ const contactRoutes=express.Router()
 contactRoutes.post("/create",createUser)
 contactRoutes.get("/get",authmiddleware,getUser)
 contactRoutes.get("/get/:id",authmiddleware,getByIdUser)
-contactRoutes.put("/update",authmiddleware,updateUser)
-contactRoutes.delete("/delete",authmiddleware,deleteUser)
+contactRoutes.put("/update/:id",authmiddleware,updateUser)
+contactRoutes.delete("/delete/:id",authmiddleware,deleteUser)
 
 
 export default contactRoutes
