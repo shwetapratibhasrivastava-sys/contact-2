@@ -20,6 +20,16 @@ export const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+
+
+      const user = await Auth.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+
+
     //token generation
     const token = jwt.sign(
       { id: user._id, email: user.email},
@@ -27,15 +37,12 @@ export const register = async (req, res) => {
       process.env.JWT_EXPIRY,
     );
 
-    const user = await Auth.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
+   
 
     res.json({
       message: "User created successfully",
       data: user,
+      token
     });
   } catch (error) {
     res.json(error.message);
