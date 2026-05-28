@@ -22,7 +22,7 @@ export const register = async (req, res) => {
 
     //token generation
     const token = jwt.sign(
-      { name , email },
+      { id: user._id, email: user.email},
       process.env.JWT_SECRET,
       process.env.JWT_EXPIRY,
     );
